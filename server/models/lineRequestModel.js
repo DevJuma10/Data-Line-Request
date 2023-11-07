@@ -44,40 +44,20 @@ sectionUnit:{
     default: 'pending'
   },
 
-  managerRecomendation: {
-    stageName: 'Recomended',
-    comments: [{
-      user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the user who made the comment
-      comment: String
-    }],
-    approved: Boolean,
+  recomendation:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recomendation'
+  },
+  
+  dataLineIssued: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'DataLine'
   },
 
-
-  // chiefManagerApproval: {
-  //   stageName: 'Approved',
-  //   comments: [{
-  //     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the user who made the comment
-  //     comment: String
-  //   }],
-  //   approved: Boolean,
-  // },
-
-  // managerRecomendation: {
-  //   stageName: 'Recomended',
-  //   comments: [{
-  //     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the user who made the comment
-  //     comment: String
-  //   }],
-  //   approved: Boolean,
-  // },
-
-  
-  
-  itemsProvided: String,
-  createdBy: { 
+  requestedBy: { 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'User' },
+    
 },  {timestamps:true});
 
 module.exports = mongoose.model('LineRequest', lineRequestSchema);

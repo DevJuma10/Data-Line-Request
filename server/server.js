@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser')
 const dbConnect = require('./config/dbConnect');
+const lineRoutes = require('./routes/lineRoutes')
 // const dotenv = require('dotenv').config();
 const app  = express();
 
@@ -15,11 +16,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+
+// API HOME
 app.get('/api/home', (req, res)=>{
     res.status(200).json({
         message:"Hello World"
     })
 })
+
+app.use('/api/line-request', lineRoutes)
 
 
 app.listen(PORT, ()=>{

@@ -24,34 +24,60 @@ department: {
 sectionUnit:{
     type:String,
     required:true
-},
-buildingFloor:{
+  },
+  buildingFloor:{
     type:String,
     required:true,
-},
-requestType: {
+  },
+  requestType: {
     type:String,
     required:true,
     enum:['new-data-line', 'replacement', 'surrender']
-},
-reason: {
+  },
+  reason: {
     type:String,
     required:true
-},
-status: {
+  },
+  status: {
     type: String,
-    enum: ['pending', 'approved', 'rejected'],
+    enum: ['pending', 'recomended', 'approved', 'rejected'],
     default: 'pending'
-},
-officialEmail: String,
-phoneNumber: String,
-  managerApproval: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  managerRemarks: String,
-  seniorApproval: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  seniorRemarks: String,
-  topManagerApproval: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  topManagerRemarks: String,
-  itemsProvided: String
+  },
+
+  managerRecomendation: {
+    stageName: 'Recomended',
+    comments: [{
+      user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the user who made the comment
+      comment: String
+    }],
+    approved: Boolean,
+  },
+
+
+  // chiefManagerApproval: {
+  //   stageName: 'Approved',
+  //   comments: [{
+  //     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the user who made the comment
+  //     comment: String
+  //   }],
+  //   approved: Boolean,
+  // },
+
+  // managerRecomendation: {
+  //   stageName: 'Recomended',
+  //   comments: [{
+  //     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the user who made the comment
+  //     comment: String
+  //   }],
+  //   approved: Boolean,
+  // },
+
+  
+  
+  itemsProvided: String,
+  createdBy: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User' },
 },  {timestamps:true});
 
 module.exports = mongoose.model('LineRequest', lineRequestSchema);

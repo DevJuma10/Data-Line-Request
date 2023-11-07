@@ -3,8 +3,7 @@ const LineRequest = require('../models/lineRequestModel')
 
 //CREATE A REQUEST -> NEW DATA LINE REQUEST
 const requestNewDataLine = asyncHandler( async (req, res) => {
-    const { fullName, staffNumber, nationalID, department, sectionUnit,buildingFloor, reason} = req.body;
-    const requestType = 'new-data-line'
+    const { fullName, staffNumber, nationalID, department, sectionUnit, buildingFloor, requestType, reason, email } = req.body;
 
     //TODO -> check if user has a pending request or an active data line
     
@@ -31,3 +30,10 @@ const requestNewDataLine = asyncHandler( async (req, res) => {
 //CREATE A REQUEST -> SURRENDER DATA LINE
 
 //CREATE A REQUEST -> REPLACING A DATA LINE REQUEST
+
+
+
+
+module.exports = {
+    requestNewDataLine,
+}

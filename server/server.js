@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const dbConnect = require('./config/dbConnect');
 const lineRoutes = require('./routes/lineRoutes')
 const recomendationRoutes = require('./routes/recomendationRoutes')
+const dataLineRoutes = require('./routes/dataLineRoutes')
 // const dotenv = require('dotenv').config();
 const app  = express();
 
@@ -27,8 +28,9 @@ app.get('/api/home', (req, res)=>{
 
 app.use('/api/line-request', lineRoutes)
 app.use('/api/approvals', recomendationRoutes)
+app.use('/api/line-issue', dataLineRoutes )
 
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server started on  port ${PORT}`);
 });

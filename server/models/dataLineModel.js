@@ -25,6 +25,12 @@ const dataLineSchema = new mongoose.Schema({
 
     },
 
+    status: {
+        type: String,
+        enum: ['active', 'deactivated'],
+        default: 'active'
+    }
+
 
 
 

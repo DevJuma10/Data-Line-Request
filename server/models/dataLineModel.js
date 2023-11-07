@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dataLineSchema = new mongoose.Schema({
 
     dataLineNumber:{
-        type: Number,
+        type: String,
         unique: true,
         required: true
     },

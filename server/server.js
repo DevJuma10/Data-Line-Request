@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require('body-parser')
 const dbConnect = require('./config/dbConnect');
 const lineRoutes = require('./routes/lineRoutes')
+const recomendationRoutes = require('./routes/recomendationRoutes')
 // const dotenv = require('dotenv').config();
 const app  = express();
 
@@ -25,6 +26,7 @@ app.get('/api/home', (req, res)=>{
 })
 
 app.use('/api/line-request', lineRoutes)
+app.use('/api/approvals', recomendationRoutes)
 
 
 app.listen(PORT, ()=>{

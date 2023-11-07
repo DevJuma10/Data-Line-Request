@@ -32,7 +32,7 @@ sectionUnit:{
   requestType: {
     type:String,
     required:true,
-    enum:['new-data-line', 'replacement', 'surrender']
+    enum:['new-data-line', 'replacement']
   },
   reason: {
     type:String,

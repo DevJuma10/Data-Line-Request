@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const recomendationSchema = new mongoose.Schema({
-    author : {
+    recomendedBy : {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User'
     },

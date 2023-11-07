@@ -6,13 +6,6 @@ const recomendationSchema = new mongoose.Schema({
         ref: 'User'
     },
 
-    stage: {
-        type: String,
-        enum: ['recomended', 'approved', 'issued'],
-        required: true
-
-    },
-
     remarks: {
         type: String,
         required: true,

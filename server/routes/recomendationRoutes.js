@@ -1,8 +1,8 @@
 const express = require('express');
-const { addRecomendation } = require('../controllers/recomendationControllers')
-const router = express.Router()
+const { addRecomendation, addApproval } = require('../controllers/recomendationControllers')
+const router = express.Router();
 
-router.post('/recomendation', addRecomendation)
-
+router.post('/recomendation/:id', addRecomendation)
+router.post('/approval/:id', addApproval)
 
 module.exports = router

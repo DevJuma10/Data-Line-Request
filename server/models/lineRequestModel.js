@@ -40,7 +40,7 @@ sectionUnit:{
   },
   status: {
     type: String,
-    enum: ['pending', 'recomended', 'approved', 'rejected'],
+    enum: ['pending', 'recomended', 'approved', 'rejected', 'issued'],
     default: 'pending'
   },
 

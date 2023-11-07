@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 
 const surrenderLineSchema = new mongoose.Schema({
+    // dataLine: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'DataLine'
+    // },
     dataLine: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'DataLine'
+        type: Number,
+        required: true,
+        unique: true
     },
 
     userFullNames : {
@@ -22,7 +27,7 @@ const surrenderLineSchema = new mongoose.Schema({
     },
 
     userExtension : {
-        type: String,
+        type: Number,
         required: true
     },
 
@@ -31,7 +36,7 @@ const surrenderLineSchema = new mongoose.Schema({
         required: true
     },
 
-    userReturnReason : {
+    returnReason : {
         type: String,
         required: true
     },
@@ -51,7 +56,7 @@ const surrenderLineSchema = new mongoose.Schema({
     },
 
     stationManagerExtension : {
-        type: String,
+        type: Number,
         required: true
     },
 
@@ -60,8 +65,16 @@ const surrenderLineSchema = new mongoose.Schema({
         required: true
     },
 
-    stationManagerReturnReason : {
+    StationManagerRecomendation: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Recomendation'
+    },
+    status: {
         type: String,
-        required: true
+        enum: ['pending', 'surrendered'],
+        default: 'pending'
     }
+
 }, {timestamps:true})  
+
+module.exports = mongoose.model('SurrenderLine', surrenderLineSchema)

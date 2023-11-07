@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const LineRequest = require('../models/lineRequestModel')
+const SurrenderRequest = require('../models/surrenderLineModel')
 
 //CREATE A REQUEST -> NEW DATA LINE REQUEST
 const requestNewDataLine = asyncHandler( async (req, res) => {
@@ -36,21 +37,33 @@ const requestNewDataLine = asyncHandler( async (req, res) => {
 //CREATE A REQUEST -> SURRENDER DATA LINE
 
 const surrenderDataLine = asyncHandler( async (req, res) => {
-    const { userFullNames, userStaffNumber, userDesignation, userExtension, userDepartment, userReturnReason, userDataLine } = req.body;
+    const { userFullNames, userStaffNumber, userDesignation, userExtension, userDepartment, returnReason, userDataLine } = req.body;
     const { stationManagerFullNames, stationManagerStaffNumber, stationManagerDesignation, stationManagerExtension, stationManagerDepartment } = req.body;
 
     
     // create request type -> surrender
      // check if line status if active
     if(1){
-        const newLineRequest = await LineRequest.create(req.body)
+        const newSurrenderRequest = await SurrenderRequest.create(req.body)
+        //notify user
+        // notify station manager 4 approval
+
+        res.status(201).json({
+            message:'success',
+            data:newSurrenderRequest
+        })
+    
+    } else {
+        throw new Error ('There\'s a pending request for this user or The user has an active data line')
     }
     
 })
 
+
+
 //CREATE A REQUEST -> REPLACING A DATA LINE REQUEST
 
-const
+// const
 
 //ISSUE LINE TO APPLICANT
 
@@ -59,4 +72,5 @@ const
 
 module.exports = {
     requestNewDataLine,
+    surrenderDataLine
 }
